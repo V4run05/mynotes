@@ -70,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                   await showErrorDialog(context, 'Error Code: ${e.code}');
                 }
               } catch (e) {
-                await showErrorDialog(context, 'Error Code: ${e.toString()}');
+                await showErrorDialog(context, e.toString());
               }
             },
             child: const Text('Login'),
