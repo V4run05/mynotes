@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -14,15 +15,15 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
-    _email = TextEditingController(); // TODO: implement initState
-    _password = TextEditingController(); // TODO: implement initState
+    _email = TextEditingController();
+    _password = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _email.dispose(); // TODO: implement dispose
-    _password.dispose(); // TODO: implement dispose
+    _email.dispose();
+    _password.dispose();
     super.dispose();
   }
 
@@ -51,21 +52,22 @@ class _LoginViewState extends State<LoginView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                final userCredential = await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(
-                      email: email,
-                      password: password,
-                    );
-                print(userCredential);
+                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                );
+                Navigator.of(
+                  context,
+                ).pushNamedAndRemoveUntil('/notes/', (route) => false);
               } on FirebaseAuthException catch (e) {
-                print(e.code);
+                devtools.log(e.code);
                 if (e.code == 'user-not-found') {
-                  print('User not found');
+                  devtools.log('User not found');
                 } else if (e.code == 'wrong-password') {
-                  print('Wrong password');
+                  devtools.log('Wrong password');
                 } else {
-                  print('Something else happened');
-                  print(e.code);
+                  devtools.log('Something else happened');
+                  devtools.log(e.code);
                 }
               }
             },
