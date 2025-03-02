@@ -13,10 +13,10 @@ void main() {
     MaterialApp(
       title: 'My Notes',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color.fromARGB(255, 122, 192, 250),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
+          backgroundColor: Colors.white,
+          foregroundColor: Color.fromARGB(255, 122, 192, 250),
         ),
       ),
       home: const HomePage(),
