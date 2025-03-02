@@ -31,7 +31,7 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main UI'),
+        title: const Text('Your Notes'),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
@@ -78,6 +78,15 @@ class _NotesViewState extends State<NotesView> {
               return const CircularProgressIndicator();
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton.large(
+        onPressed: () {
+          Navigator.of(context).pushNamed(newNoteRoute);
+        },
+        backgroundColor: const Color.fromARGB(255, 182, 221, 252),
+        foregroundColor: Colors.white,
+        enableFeedback: true,
+        child: Icon(Icons.add, size: 55),
       ),
     );
   }
