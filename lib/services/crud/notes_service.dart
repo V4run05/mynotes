@@ -56,10 +56,12 @@ class NotesService {
     await getNote(id: note.id);
 
     //update db
-    final updateCount = await db.update(noteTable, {
-      textColumn: text,
-      isSyncedWithCloudColumn: 0,
-    });
+    final updateCount = await db.update(
+      noteTable,
+      {textColumn: text, isSyncedWithCloudColumn: 0},
+      where: 'id = ?',
+      whereArgs: [note.id],
+    );
 
     if (updateCount == 0) {
       throw CouldNotUpdateNoteException();
@@ -266,7 +268,7 @@ class DatabaseUser {
   final int id;
   final String email;
 
-  DatabaseUser({required this.id, required this.email});
+  const DatabaseUser({required this.id, required this.email});
 
   DatabaseUser.fromRow(Map<String, Object?> map)
     : id = map[idColumn] as int,

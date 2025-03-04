@@ -14,7 +14,9 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('Verify email')),
+      appBar: AppBar(
+        title: const Text('Verify email', style: TextStyle(fontSize: 25)),
+      ),
       body: Column(
         children: [
           const Text(
