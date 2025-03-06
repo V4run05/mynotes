@@ -28,9 +28,18 @@ class _NotesViewState extends State<NotesView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('My Notes', style: TextStyle(fontSize: 25)),
+        title: const Text(
+          'My Notes',
+          style: TextStyle(
+            fontSize: 25,
+            fontFamily: "Poppins",
+            fontWeight: FontWeight.w300,
+          ),
+        ),
         actions: [
           PopupMenuButton<MenuAction>(
+            color: Color.fromARGB(255, 244, 249, 255),
+            shadowColor: const Color.fromARGB(255, 122, 192, 250),
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
@@ -48,7 +57,14 @@ class _NotesViewState extends State<NotesView> {
               return const [
                 PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
-                  child: Text('Logout'),
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                 ),
               ];
             },
@@ -73,6 +89,12 @@ class _NotesViewState extends State<NotesView> {
                           onDeleteNote: (note) async {
                             await _notesService.deleteNote(id: note.id);
                           },
+                          onTap: (note) {
+                            Navigator.of(context).pushNamed(
+                              createOrUpdateNoteRoute,
+                              arguments: note,
+                            );
+                          },
                         );
                       } else {
                         return const CircularProgressIndicator();
@@ -92,7 +114,7 @@ class _NotesViewState extends State<NotesView> {
         width: 80,
         child: FloatingActionButton.large(
           onPressed: () {
-            Navigator.of(context).pushNamed(newNoteRoute);
+            Navigator.of(context).pushNamed(createOrUpdateNoteRoute);
           },
           backgroundColor: const Color.fromARGB(255, 182, 221, 252),
           foregroundColor: Colors.white,

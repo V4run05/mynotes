@@ -35,24 +35,95 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Login', style: TextStyle(fontSize: 25)),
+        title: const Text(
+          'Login',
+          style: TextStyle(
+            color: Color.fromARGB(255, 122, 192, 250),
+            fontFamily: "Poppins",
+            fontSize: 25,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
       ),
       body: Column(
         children: [
-          TextField(
-            controller: _email,
-            enableSuggestions: false,
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(hintText: 'Enter you email here'),
+          SizedBox(height: 25),
+          Center(
+            child: SizedBox(
+              width: 327.5,
+              height: 50,
+              child: TextField(
+                cursorColor: Color.fromARGB(255, 122, 192, 250),
+                cursorErrorColor: Color.fromARGB(255, 122, 192, 250),
+                controller: _email,
+                enableSuggestions: false,
+                autocorrect: false,
+                keyboardType: TextInputType.emailAddress,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  hintText: 'Enter you email here',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 122, 192, 250),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 122, 192, 250),
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 122, 192, 250),
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 122, 192, 250),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
-          TextField(
-            controller: _password,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration: InputDecoration(hintText: 'Enter your password here'),
+          SizedBox(height: 10),
+          SizedBox(
+            width: 327.5,
+            height: 50,
+            child: TextField(
+              cursorColor: Color.fromARGB(255, 122, 192, 250),
+              cursorErrorColor: Color.fromARGB(255, 122, 192, 250),
+              controller: _password,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                hintText: 'Enter your password here',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 122, 192, 250),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 122, 192, 250),
+                  ),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 122, 192, 250),
+                  ),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 122, 192, 250),
+                  ),
+                ),
+              ),
+            ),
           ),
+          SizedBox(height: 10),
           TextButton(
             onPressed: () async {
               final email = _email.text;
@@ -80,7 +151,14 @@ class _LoginViewState extends State<LoginView> {
                 await showErrorDialog(context, 'Authentication error');
               }
             },
-            child: const Text('Login'),
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                color: Color.fromARGB(255, 122, 192, 250),
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
           TextButton(
             onPressed: () {
@@ -88,7 +166,14 @@ class _LoginViewState extends State<LoginView> {
                 context,
               ).pushNamedAndRemoveUntil(registerRoute, (route) => false);
             },
-            child: Text('Not registered yet? Register here!'),
+            child: Text(
+              'Not registered yet? Register here!',
+              style: TextStyle(
+                color: Color.fromARGB(255, 122, 192, 250),
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
         ],
       ),
